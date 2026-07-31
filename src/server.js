@@ -3,6 +3,12 @@ const { connectToDatabase }=require('../src/db/setupdb')
 require('dotenv').config()
 const app=express()
 
+
+
+
+
+
+
 async function startServer(app) {
     try {
         await connectToDatabase();
