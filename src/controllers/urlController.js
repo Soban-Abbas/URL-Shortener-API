@@ -30,14 +30,30 @@ exports.redirect=async(req , res , next)=>{
     try {
         const password=req.body?.password || null;
     const shortUrl=req.params.shortUrl;
-console.log("hello")
-const validateshortUrl=await urlService.verifyShortUrl(shortUrl,password)
+ const userAgent=req.get('user-Agent');
+const ip=req.ip;
+const referrer=req.get('Referrer') || null;
+const validateshortUrl=await urlService.verifyShortUrl(shortUrl,password,ip,userAgent,referrer)
 
-console.log(validateshortUrl)
 res.redirect(validateshortUrl);
     } catch (error) {
         next(error)
     }
     
 
+}
+
+
+exports.getAnalysis=async(req , res , next)=>{
+    try {
+        const urlId=req.params.id;
+        const password=req.body?.password || null;
+
+        const getAnalysis=await urlService.getAnalysis(urlId,password)
+        res.status(200).json({
+          analysis:  getAnalysis
+        })
+    } catch (error) {
+        next(error)
+    }
 }

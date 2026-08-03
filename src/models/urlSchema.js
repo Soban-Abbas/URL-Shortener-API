@@ -8,8 +8,9 @@ const urlSchema = new Schema({
     originalUrl: { type: String, required: true },
     shortUrl: { type: String, require: true, unique: true },
     password: { type: String, default: null, required: false },
-    clickCount: { type: Number, default: 0 }
+    clickCount: { type: Number, default: 0 },
+    expiresAt:{type:Date,default:null}
 }, { timestamps: true });
-urlSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 })
+urlSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 })
 
 exports.url = mongoose.model('urls', urlSchema);

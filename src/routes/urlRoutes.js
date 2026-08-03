@@ -7,4 +7,6 @@ const { isUrl } = require("../validators/validateUrl");
 router.post('/url', isUrl,urlController.postUrl)
 
 router.get('/:shortUrl',urlController.redirect);
+
+router.get('/analysis/:id',urlController.getAnalysis)
 module.exports=router;

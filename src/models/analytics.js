@@ -2,7 +2,7 @@ const {Schema,model }=require("mongoose");
 
 const analyticsSchema=new Schema({
     urlId:{type: Schema.Types.ObjectId,ref:'urls',required:true},
-    expiryTime:{type:Date,required:true},
+    expiryTime:{type:Date,default: null},
     ip:{type:String},
     userAgent:{type:String,default:null},
     referrer:{type:String,default:null}
