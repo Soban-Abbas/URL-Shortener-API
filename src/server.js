@@ -11,8 +11,12 @@ app.use(bodyParser.json());
 
 
 
-app.use('/api',urlRoutes)
-
+app.use(urlRoutes)
+app.use('/',(req ,res , next)=>{
+   return res.status(200).json({
+        message:"wellcome to url shortner"
+    })
+})
 app.use(globalErrorMiddleware)
 async function startServer(app) {
     try {

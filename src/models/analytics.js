@@ -9,7 +9,7 @@ const analyticsSchema=new Schema({
 
 },{timestamps:true});
 
-analytics.index({expiryTime:1},{expireAfterSeconds:0})
+analyticsSchema.index({expiryTime:1},{expireAfterSeconds:0})
 
 
 exports.analytics=model('analytics',analyticsSchema);
